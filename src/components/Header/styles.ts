@@ -3,7 +3,10 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
     background-color: var(--yellow);
     width: 100vw;
-    height: 12rem;
+    height: 17rem;
+
+    display: flex;
+    flex-direction: column;
     
     .logo {
         width: 25rem;
@@ -12,7 +15,7 @@ export const HeaderContainer = styled.header`
 
 export const Container = styled.div`
     width: 80vw;
-    height: 100%;
+    max-height: 12rem;
     margin: auto;
 
     display: flex;
@@ -50,10 +53,11 @@ export const BarMenu = styled.nav`
         justify-content: space-around;
         align-items: center;
 
-        width: 80vw;
+        width: 60vw;
         height: 100%;
         margin: auto;
         
+        font-weight: 500;
         font-size: 1.4rem;
         
         li {

@@ -1,16 +1,20 @@
 import { FormEvent, useEffect, useState } from "react";
+import { api } from "../../services/api";
+
 import Modal from "react-modal";
+import "./styles.css";
+
 import closeImg from '../../assets/img/close.svg';
 import singularLogo from '../../assets/img/singular_icon.png';
-import { api } from "../../services/api";
-import "./styles.css";
 
 interface loginModalProps {
     isOpen: boolean;
+    isLogin: boolean;
+    changeIsLogin: (isLogin: boolean) => void;
     onRequestClose: () => void;
 }
 
-export function LoginModal({ isOpen, onRequestClose }: loginModalProps) {
+export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: loginModalProps) {
     const [registerUsername, setRegisterUsername] = useState('');
     const [registerEmail, setRegisterEmail] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
@@ -18,12 +22,22 @@ export function LoginModal({ isOpen, onRequestClose }: loginModalProps) {
     const [loginModal, setLoginModal] = useState('visible');
     const [registerModal, setRegisterModal] = useState('invisible');
 
+    useEffect(() => {
+        if (isLogin) {
+            handleSwitchToLogin();
+        } else {
+            handleSwitchToRegister();
+        }
+    }, [isLogin])
+    
     function handleSwitchToRegister() {
+        changeIsLogin(false);
         setLoginModal('invisible');
         setRegisterModal('visible');
     }
 
     function handleSwitchToLogin() {
+        changeIsLogin(true);
         setLoginModal('visible');
         setRegisterModal('invisible');
     }
@@ -31,23 +45,20 @@ export function LoginModal({ isOpen, onRequestClose }: loginModalProps) {
     async function handleRegisterSubmit(event: FormEvent) {
         event.preventDefault();
 
-        const user = {
+
+        await api.post("/login", {
             username: registerUsername,
             password: registerPassword,
             email: registerEmail,
             admin: '0',
             avatar: 'asasasa'
-        }
-
-        console.log(`DEBUG USER:`);
-        console.log(user);
-        
-        await api.post("/login", user,
+        },
             {
                 headers: {
                     'Content-Type': 'application/json',
                 }
-            }).then(res => console.log("POsting Data ", res)).catch(err => console.log(err));
+            }).then(res => console.log("Posting Data ", res)).catch(err => console.log(err));
+        onRequestClose();
     }
 
 

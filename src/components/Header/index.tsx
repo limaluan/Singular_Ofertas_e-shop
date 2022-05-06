@@ -6,8 +6,15 @@ import { HeaderContainer, Container, User, BarMenu } from "./styles";
 
 export default function Header() {
     const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
+    const [ isLoginModal, setIsLoginModal ] = useState(true);
 
     function handleOpenLoginModal() {
+        setIsLoginModal(true);
+        setisLoginModalOpen(true);
+    }
+
+    function handleOpenRegisterModal() {
+        setIsLoginModal(false);
         setisLoginModalOpen(true);
     }
 
@@ -15,6 +22,10 @@ export default function Header() {
         setisLoginModalOpen(false);
     }
 
+    function handleToggleIsLogin(isLogin: boolean) {
+        setIsLoginModal(isLogin);
+    }
+    
     return (
         <HeaderContainer>
             <Container>
@@ -22,7 +33,7 @@ export default function Header() {
 
                 <User>
                     <img className="avatar" src={avatarDefaultImg} alt="Singular Ofertas" />
-                    <p>Faça <b onClick={handleOpenLoginModal}>Login</b> ou <br />crie seu <b onClick={handleOpenLoginModal}>Cadastro</b></p>
+                    <p>Faça <b onClick={handleOpenLoginModal}>Login</b> ou <br />crie seu <b onClick={handleOpenRegisterModal}>Cadastro</b></p>
                 </User>
             </Container>
             <BarMenu>
@@ -37,6 +48,8 @@ export default function Header() {
 
             <LoginModal isOpen={isLoginModalOpen}
                 onRequestClose={handleCloseLoginModal}
+                isLogin={isLoginModal}
+                changeIsLogin={handleToggleIsLogin}
             />
         </HeaderContainer>
     )
