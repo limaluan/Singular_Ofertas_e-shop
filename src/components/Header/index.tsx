@@ -1,12 +1,18 @@
-import { useState } from "react";
-import singularOfertasImg from "../../assets/img/singular_ofertas_name.svg";
-import avatarDefaultImg from "../../assets/img/avatar.svg";
+import { useContext, useState } from "react";
 import { LoginModal } from "../LoginModal";
 import { HeaderContainer, Container, User, BarMenu } from "./styles";
 
+import { AuthContext } from "../../contexts/AuthContext";
+
+import singularOfertasImg from "../../assets/img/singular_ofertas_name.svg";
+import avatarDefaultImg from "../../assets/img/avatar.svg";
+
 export default function Header() {
     const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
-    const [ isLoginModal, setIsLoginModal ] = useState(true);
+    const [isLoginModal, setIsLoginModal] = useState(true);
+
+    const { isAuthenticated } = useContext(AuthContext);
+    const isAdm = false;
 
     function handleOpenLoginModal() {
         setIsLoginModal(true);
@@ -25,19 +31,28 @@ export default function Header() {
     function handleToggleIsLogin(isLogin: boolean) {
         setIsLoginModal(isLogin);
     }
-    
+
     return (
         <HeaderContainer>
             <Container>
-                <img src={singularOfertasImg} className="logo" alt="Singular Ofertas" />
+                <img src={singularOfertasImg} alt="Singular Ofertas" />
 
                 <User>
-                    <img className="avatar" src={avatarDefaultImg} alt="Singular Ofertas" />
-                    <p>Faça <b onClick={handleOpenLoginModal}>Login</b> ou <br />crie seu <b onClick={handleOpenRegisterModal}>Cadastro</b></p>
+                    <img src={avatarDefaultImg} alt="Singular Ofertas" />
+                    {isAuthenticated ?
+                        <p>Logado</p>
+                        :
+                        <p>Faça <b onClick={handleOpenLoginModal}>Login</b> ou <br />crie seu <b onClick={handleOpenRegisterModal}>Cadastro</b></p>
+                    }
                 </User>
             </Container>
             <BarMenu>
                 <ul>
+                    {isAdm ?
+                        <li>Admin</li>
+                        :
+                        <></>
+                    }
                     <li>Ínicio</li>
                     <li>Quem somos?</li>
                     <li>Perguntas Frequentes</li>

@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
     background-color: var(--yellow);
-    width: 100vw;
+    width: 100%;
     height: 17rem;
 
     display: flex;
     flex-direction: column;
     
-    .logo {
+    img {
         width: 25rem;
+        cursor: pointer;
     }
 `;
 
@@ -35,16 +36,15 @@ export const User = styled.div`
     b {
         cursor: pointer;
     }
-    /* background-color: green; */
     
-    .avatar {
+    img {
         width: 5rem;
         margin-right: 1rem;
     }
 `;
 
 export const BarMenu = styled.nav`
-    width: 100vw;
+    width: 100%;
     height: 5rem;
     background-color: var(--gray-light);
 
@@ -58,7 +58,7 @@ export const BarMenu = styled.nav`
         margin: auto;
         
         font-weight: 500;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         
         li {
             cursor: pointer;

@@ -1,16 +1,15 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
+export const Container = styled.main`
     width: 80vw;
     margin: auto;
     height: 140vh;
     
-    .banner {
+    img {
         display:block;
-        width: 80vw;
+        width: 100%;
         margin: auto;
 
         cursor: pointer;
-        background-color: blue;
     }
 `;

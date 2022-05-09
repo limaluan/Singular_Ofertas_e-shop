@@ -21,12 +21,14 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         list-style: none;
     }
-
+    
     body {
         background-color: var(--background);
         -webkit-font-smoothing: antialiased;
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
+
+        width: 100%;
     }
 
     input, textarea {

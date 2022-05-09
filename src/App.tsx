@@ -2,13 +2,17 @@ import { GlobalStyle } from "./styles/global";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import { AuthProvider } from "./contexts/AuthContext";
+import Product from "./pages/ProductPage";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </AuthProvider>
       <GlobalStyle />
     </BrowserRouter>
   );
