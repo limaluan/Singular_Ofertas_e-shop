@@ -3,7 +3,6 @@ import { GlobalStyle } from "./styles/global";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import { AuthProvider } from "./contexts/AuthContext";
-import Product from "./pages/ProductPage";
 
 function App() {
   return (
