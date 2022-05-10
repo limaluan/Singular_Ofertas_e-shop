@@ -28,6 +28,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 <h2><a href='https://github.com/KaioAntonio/Galatika-Shop'>Back-End</a></h2>
 
  - FastAPI
+ - Python
+ - Postgre
 
 <!-- ## 💻 Projeto -->
 ## 🚧 Projeto em progresso
@@ -40,6 +42,11 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 🔖 Layout
 
 Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/djgVl7LQRiR6kM2gKoWOfC/Singular-Ofertas?node-id=2%3A4). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
+
+
+
+## 🌐 API
+Você pode acessar a API através [desse link](https://galatika-shop.herokuapp.com).
 
 ---
 

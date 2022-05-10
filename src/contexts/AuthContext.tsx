@@ -24,7 +24,7 @@ export function AuthProvider({ children }: IAuthProviderProps) {
         try {
             const response = await api.post('/auth/token', {
                 username: email,
-                password
+                password,
             });
 
             console.log(response.data);
