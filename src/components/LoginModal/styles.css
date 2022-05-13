@@ -45,6 +45,11 @@
     animation-fill-mode: forwards;
 }
 
+.content p {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
 .content .closeModalImg {
     position: absolute;
     top: 20px;

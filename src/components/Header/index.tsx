@@ -11,8 +11,7 @@ export default function Header() {
     const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
     const [isLoginModal, setIsLoginModal] = useState(true);
 
-    const { isAuthenticated } = useContext(AuthContext);
-    const isAdm = false;
+    const { isAuthenticated, user } = useContext(AuthContext);
 
     function handleOpenLoginModal() {
         setIsLoginModal(true);
@@ -40,7 +39,7 @@ export default function Header() {
                 <User>
                     <img src={avatarDefaultImg} alt="Singular Ofertas" />
                     {isAuthenticated ?
-                        <p>Logado</p>
+                        <p>Bem-vindo,<br /> <b>{user?.username}</b></p>
                         :
                         <p>Faça <b onClick={handleOpenLoginModal}>Login</b> ou <br />crie seu <b onClick={handleOpenRegisterModal}>Cadastro</b></p>
                     }
@@ -48,10 +47,9 @@ export default function Header() {
             </Container>
             <BarMenu>
                 <ul>
-                    {isAdm ?
-                        <li>Admin</li>
-                        :
-                        <></>
+                    {user?.admin
+                        ? <li>Admin</li>
+                        : <></>
                     }
                     <li>Ínicio</li>
                     <li>Quem somos?</li>

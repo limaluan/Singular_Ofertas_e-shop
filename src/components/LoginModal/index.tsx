@@ -1,5 +1,5 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
-import { api, registerUser } from "../../services/api";
+import { registerUser } from "../../services/api";
 
 import Modal from "react-modal";
 import "./styles.css";
@@ -22,6 +22,9 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
 
     const [loginModal, setLoginModal] = useState('visible');
     const [registerModal, setRegisterModal] = useState('invisible');
+
+    const [loginError, SetLoginError] = useState(false);
+    const [registerError, SetregisterError] = useState(false);
 
     const { signIn } = useContext(AuthContext);
 
@@ -53,18 +56,33 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
             username,
             password: userPassword,
             email: userEmail,
-        })
+        });
 
-        console.log(response);
-    }
-
-    async function handleLoginSubmit(event: FormEvent) {
-        event.preventDefault();
+        if (response.error) {
+            return SetregisterError(true);
+        }
         
         signIn({
             email: userEmail,
             password: userPassword
         });
+
+        onRequestClose();
+    }
+
+    async function handleLoginSubmit(event: FormEvent) {
+        event.preventDefault();
+
+        const response = await signIn({
+            email: userEmail,
+            password: userPassword
+        });
+
+        if (!response) {
+            return SetLoginError(true);
+        }
+
+        onRequestClose();
     }
 
     return (
@@ -96,6 +114,10 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
                     placeholder="Senha"
                     onChange={(event) => setUserPassword(event.target.value)}
                 />
+                {loginError
+                    ? <p>Usuário ou senha inválido</p>
+                    : <></>
+                }
                 <button type='submit'>Login</button>
 
                 <p className="switchLogin">Não tem uma conta? <a href="#" onClick={handleSwitchToRegister}>Cadastre-se</a></p>
@@ -120,6 +142,11 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
                     value={userPassword}
                     onChange={(event) => setUserPassword(event.target.value)}
                 />
+                {
+                    registerError
+                    ? <p>Email já utilizado</p>
+                    : <></>
+                }
                 <button type="submit">Cadastrar</button>
 
                 <p className="switchLogin">Já possui uma conta? <a href="#" onClick={handleSwitchToLogin}>Faça Login</a></p>
