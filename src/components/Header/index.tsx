@@ -1,17 +1,15 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LoginModal } from "../LoginModal";
 import { HeaderContainer, Container, User, BarMenu } from "./styles";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
 import singularOfertasImg from "../../assets/img/singular_ofertas_name.svg";
-import avatarDefaultImg from "../../assets/img/avatar.svg";
+import UserAvatarModal from "../UserAvatarModal";
 
 export default function Header() {
     const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
     const [isLoginModal, setIsLoginModal] = useState(true);
-
-    const { isAuthenticated, user } = useContext(AuthContext);
 
     function handleOpenLoginModal() {
         setIsLoginModal(true);
@@ -31,13 +29,39 @@ export default function Header() {
         setIsLoginModal(isLogin);
     }
 
+    const { isAuthenticated, user } = useContext(AuthContext);
+
+    const [userAvatar, setUserAvatar] = useState('');
+
+    const [isUserAvatarModalOpen, setUserAvatarModalOpen] = useState(false);
+
+
+    function handleCloseUrlModal() {
+        setUserAvatarModalOpen(false);
+    }
+
+    function handleOpenUrlModal() {
+        setUserAvatarModalOpen(true);
+    }
+
+    useEffect(() => {
+        if (!user?.avatar) {
+            return setUserAvatar('https://portal1.iff.edu.br/desenvolvimento-institucional/imagens/avatar.jpg');
+        }
+
+        return setUserAvatar(user.avatar);
+    }, [isAuthenticated]);
+
     return (
         <HeaderContainer>
             <Container>
                 <img src={singularOfertasImg} alt="Singular Ofertas" />
 
                 <User>
-                    <img src={avatarDefaultImg} alt="Singular Ofertas" />
+                    {isAuthenticated
+                        ? <img src={userAvatar} alt="Avatar" onClick={handleOpenUrlModal} />
+                        : <img src={userAvatar} alt="Avatar" />
+                    }
                     {isAuthenticated ?
                         <p>Bem-vindo,<br /> <b>{user?.username}</b></p>
                         :
@@ -64,6 +88,12 @@ export default function Header() {
                 isLogin={isLoginModal}
                 changeIsLogin={handleToggleIsLogin}
             />
+
+            <UserAvatarModal
+                isOpen={isUserAvatarModalOpen}
+                onRequestClose={handleCloseUrlModal}
+            />
+
         </HeaderContainer>
     )
 }

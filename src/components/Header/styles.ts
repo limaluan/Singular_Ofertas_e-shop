@@ -40,6 +40,8 @@ export const User = styled.div`
     img {
         width: 5rem;
         margin-right: 1rem;
+
+        border-radius: 30px;
     }
 `;
 

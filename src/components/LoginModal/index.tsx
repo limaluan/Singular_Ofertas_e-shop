@@ -24,7 +24,7 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
     const [registerModal, setRegisterModal] = useState('invisible');
 
     const [loginError, SetLoginError] = useState(false);
-    const [registerError, SetregisterError] = useState(false);
+    const [registerError, SetregisterError] = useState('');
 
     const { signIn } = useContext(AuthContext);
 
@@ -57,9 +57,14 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
             password: userPassword,
             email: userEmail,
         });
-
+        
         if (response.error) {
-            return SetregisterError(true);
+            console.log(response.error);
+            if ( response.error === 'email is already token' ) {
+                return SetregisterError('Este e-mail já está sendo utilizado.');
+            } else {
+                return SetregisterError('E-mail inválido.');
+            }
         }
         
         signIn({
@@ -142,11 +147,7 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
                     value={userPassword}
                     onChange={(event) => setUserPassword(event.target.value)}
                 />
-                {
-                    registerError
-                    ? <p>Email já utilizado</p>
-                    : <></>
-                }
+                <p>{registerError}</p>
                 <button type="submit">Cadastrar</button>
 
                 <p className="switchLogin">Já possui uma conta? <a href="#" onClick={handleSwitchToLogin}>Faça Login</a></p>

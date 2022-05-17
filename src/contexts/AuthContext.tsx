@@ -21,6 +21,7 @@ interface IUser {
     email: string;
     admin: boolean;
     username: string;
+    avatar: string;
 };
 
 export const AuthContext = createContext({} as IAuthContextData);
@@ -34,12 +35,13 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
         if (email) {
             api.get(`/v1/user/${email}`).then(response => {
-                const { email, admin, username } = response.data;
+                const { email, admin, username, avatar } = response.data;
                 console.log(response)
                 setUser({
                     email,
                     admin,
                     username,
+                    avatar,
                 })
             })
         }
@@ -70,12 +72,13 @@ export function AuthProvider({ children }: IAuthProviderProps) {
     
             api.get(`v1/user/${email}`).then(
                 response => {
-                    const { username, admin } = response.data;
+                    const { username, admin, avatar } = response.data;
     
                     setUser({
                         email,
                         admin,
-                        username
+                        username,
+                        avatar
                     });
                 }
             )

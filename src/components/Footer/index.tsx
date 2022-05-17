@@ -6,10 +6,10 @@ export default function Footer() {
             <PaymentMethods>
                 <h3>Formas de Pagamento</h3>
                 <ul>
-                    <li><img src="https://wx.mlcdn.com.br/site/desk/footer/payment-types/visa.svg" alt="Bandeira Visa" /></li>
-                    <li><img src="https://wx.mlcdn.com.br/site/desk/footer/payment-types/mastercard.svg" alt="Bandeira Mastercard" /></li>
-                    <li><img src="https://wx.mlcdn.com.br/site/desk/footer/payment-types/hipercard.svg" alt="Bandeira Hipercard" /></li>
-                    <li><img src="https://wx.mlcdn.com.br/site/desk/footer/payment-types/elo.svg" alt="Bandeira Elo" /></li>
+                    <li><img loading='lazy' src="https://wx.mlcdn.com.br/site/desk/footer/payment-types/visa.svg" alt="Bandeira Visa" /></li>
+                    <li><img loading='lazy' src="https://wx.mlcdn.com.br/site/desk/footer/payment-types/mastercard.svg" alt="Bandeira Mastercard" /></li>
+                    <li><img loading='lazy' src="https://wx.mlcdn.com.br/site/desk/footer/payment-types/hipercard.svg" alt="Bandeira Hipercard" /></li>
+                    <li><img loading='lazy' src="https://wx.mlcdn.com.br/site/desk/footer/payment-types/elo.svg" alt="Bandeira Elo" /></li>
                 </ul>
             </PaymentMethods>
             <hr />

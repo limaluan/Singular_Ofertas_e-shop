@@ -6,7 +6,12 @@ const cookies = parseCookies();
 interface IRegisterUserDTO {
     username: string;
     password: string;
-    email: string
+    email: string;
+}
+
+interface IchangeUserAvatar {
+    email: string;
+    avatarUrl: string;
 }
 
 export const api = axios.create({
@@ -26,4 +31,13 @@ export async function registerUser({ username, password, email }: IRegisterUserD
     });
 
     return response.data;
+};
+
+export async function changeUserAvatar({ email, avatarUrl }: IchangeUserAvatar) {
+    const response = await api.patch("/v1/avatar", {
+        email,
+        avatar: avatarUrl,
+    });
+
+    return response;
 };
