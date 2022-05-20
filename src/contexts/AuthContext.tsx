@@ -36,7 +36,6 @@ export function AuthProvider({ children }: IAuthProviderProps) {
         if (email) {
             api.get(`/v1/user/${email}`).then(response => {
                 const { email, admin, username, avatar } = response.data;
-                console.log(response)
                 setUser({
                     email,
                     admin,

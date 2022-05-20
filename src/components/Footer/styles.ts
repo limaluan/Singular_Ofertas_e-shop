@@ -9,6 +9,8 @@ export const Container = styled.footer`
     flex-direction: column;
     align-items: center;
 
+    margin-top: 5rem;
+    
     hr {
         width: 80%;
         color: white;

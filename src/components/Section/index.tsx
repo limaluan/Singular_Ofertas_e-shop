@@ -1,38 +1,46 @@
-import { SectionBody, Title, Products, Item } from "./styles"
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useProducts } from "../../hooks/useProducts";
+import { SectionBody, Products, Item } from "./styles"
 
-export default function Section() {
+interface ISectionProps {
+    title?: string;
+}
+
+export default function Section(props: ISectionProps) {
+    const { products, deleteProduct } = useProducts();
+    const { user } = useContext(AuthContext);
+
+    if (products.length === 0) {
+        return (
+            <SectionBody>
+                <h2>Não há produtos cadastrados.</h2>
+            </SectionBody>
+        );
+    }
+
     return (
+        // Se possível isolar esse componente apenas para adms
         <SectionBody>
-            <Title>Veja mais novidades para você!</Title>
+            <h2>{props.title || 'Produtos'}</h2>
             <Products>
-                <Item>
-                    <img src="https://s2.glbimg.com/p5Z-6dYDcYUiQjrvN0BkvsoCUo8=/0x0:695x695/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/L/h/92sByoTHKBFtpiw6NssQ/suposto-iphone-14.jpg" alt="Produto" />
-                    <article>
-                        <h2><a href="#">Xiamo Pro 9</a></h2>
-                        <h3><a href="#">R$ 499,00</a></h3>
-                    </article>
-                </Item>
-                <Item>
-                    <img src="https://s2.glbimg.com/p5Z-6dYDcYUiQjrvN0BkvsoCUo8=/0x0:695x695/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/L/h/92sByoTHKBFtpiw6NssQ/suposto-iphone-14.jpg" alt="Produto" />
-                    <article>
-                        <h2><a href="#">Xiamo Pro 9</a></h2>
-                        <h3><a href="#">R$ 499,00</a></h3>
-                    </article>
-                </Item>
-                <Item>
-                    <img src="https://s2.glbimg.com/p5Z-6dYDcYUiQjrvN0BkvsoCUo8=/0x0:695x695/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/L/h/92sByoTHKBFtpiw6NssQ/suposto-iphone-14.jpg" alt="Produto" />
-                    <article>
-                        <h2><a href="#">Xiamo Pro 9</a></h2>
-                        <h3><a href="#">R$ 499,00</a></h3>
-                    </article>
-                </Item>
-                <Item>
-                    <img src="https://s2.glbimg.com/p5Z-6dYDcYUiQjrvN0BkvsoCUo8=/0x0:695x695/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/L/h/92sByoTHKBFtpiw6NssQ/suposto-iphone-14.jpg" alt="Produto" />
-                    <article>
-                        <h2><a href="#">Xiamo Pro 9</a></h2>
-                        <h3><a href="#">R$ 499,00</a></h3>
-                    </article>
-                </Item>
+                {products.map(product => (
+                    <Item key={product.cod_product}>
+                        {user?.admin
+                            ? <svg onClick={() => deleteProduct(product.cod_product)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z" /></svg>
+                            : <></>
+                        }
+                        <img src={product.image} alt={product.description} />
+                        <div>
+                            <h2>{product.name_product}</h2>
+                            <h3>{new Intl.NumberFormat('pt-BR', {
+                                style: 'currency',
+                                currency: 'BRL'
+                            }).format(parseInt(product.price))}</h3>
+                        </div>
+                    </Item>
+                ))}
+
             </Products>
         </SectionBody>
     )

@@ -43,6 +43,12 @@ export const User = styled.div`
 
         border-radius: 30px;
     }
+
+    button {
+        padding: 0.2rem 0.5rem;
+        font-size: 1.5rem;
+        background-color: var(--background);
+    }
 `;
 
 export const BarMenu = styled.nav`

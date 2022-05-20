@@ -1,29 +1,14 @@
-import Header from "../../components/Header";
 import { Container } from "./styles";
 import Section from "../../components/Section";
-import Footer from "../../components/Footer";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-// import { UrlModal } from "../../components/UrlModal";
 
 export default function Home() {
     const { user } = useContext(AuthContext);
     const [banner, setBanner] = useState('https://i.imgur.com/UkxJSEC.png');
 
-    // const [isUrlModalOpen, setIsUrlModalOpen] = useState(false);
-
-    // function handleOpenUrlModal() {
-    //     setIsUrlModalOpen(true);
-    // }
-
-    // function handleCloseUrlModal() {
-    //     setIsUrlModalOpen(false);
-    // }
-
-
     return (
         <>
-            <Header />
             <Container>
                 <div>
                     <img src={banner}
@@ -39,7 +24,6 @@ export default function Home() {
                 <Section />
                 <Section />
             </Container>
-            <Footer />
         </>
     )
 }

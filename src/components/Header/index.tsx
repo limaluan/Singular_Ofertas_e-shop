@@ -6,6 +6,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 import singularOfertasImg from "../../assets/img/singular_ofertas_name.svg";
 import UserAvatarModal from "../UserAvatarModal";
+import { destroyCookie } from "nookies";
+import { Navigate } from "react-router";
 
 export default function Header() {
     const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
@@ -44,18 +46,24 @@ export default function Header() {
         setUserAvatarModalOpen(true);
     }
 
+    function logoutUser() {
+        destroyCookie(undefined, 'singular.token');
+        destroyCookie(undefined, 'singular.email');
+        window.location.reload();
+    }
+
     useEffect(() => {
         if (!user?.avatar) {
             return setUserAvatar('https://portal1.iff.edu.br/desenvolvimento-institucional/imagens/avatar.jpg');
         }
 
         return setUserAvatar(user.avatar);
-    }, [isAuthenticated]);
+    }, [isAuthenticated, user?.avatar]);
 
     return (
         <HeaderContainer>
             <Container>
-                <img src={singularOfertasImg} alt="Singular Ofertas" />
+                <a href="/"><img src={singularOfertasImg} alt="Singular Ofertas" /></a>
 
                 <User>
                     {isAuthenticated
@@ -63,7 +71,7 @@ export default function Header() {
                         : <img src={userAvatar} alt="Avatar" />
                     }
                     {isAuthenticated ?
-                        <p>Bem-vindo,<br /> <b>{user?.username}</b></p>
+                        <p>Bem-vindo,<br /> <b>{user?.username}</b> <br /> <button onClick={logoutUser}>Logout</button></p>
                         :
                         <p>Faça <b onClick={handleOpenLoginModal}>Login</b> ou <br />crie seu <b onClick={handleOpenRegisterModal}>Cadastro</b></p>
                     }
@@ -72,10 +80,10 @@ export default function Header() {
             <BarMenu>
                 <ul>
                     {user?.admin
-                        ? <li>Admin</li>
+                        ? <li><a href="/admin">Admin</a></li>
                         : <></>
                     }
-                    <li>Ínicio</li>
+                    <li><a href="/">Ínicio</a></li>
                     <li>Quem somos?</li>
                     <li>Perguntas Frequentes</li>
                     <li>Produtos</li>
