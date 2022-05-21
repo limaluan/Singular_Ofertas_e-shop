@@ -21,7 +21,7 @@ export default function AddProductModal({ isOpen, onRequestClose }: IAddProductM
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        if (!image || !name || !description || price) {
+        if (!image || !name || !description || !price) {
             return setErrorMsg('Informações Inválidas');
         }
 
