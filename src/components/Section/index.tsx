@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useProducts } from "../../hooks/useProducts";
-import { SectionBody, Products, Item } from "./styles"
+import AddProductModal from "../Modals/AddProductModal";
+import { SectionBody, Products, Item, AddProduct } from "./styles"
 
 interface ISectionProps {
     title?: string;
@@ -10,6 +11,16 @@ interface ISectionProps {
 export default function Section(props: ISectionProps) {
     const { products, deleteProduct } = useProducts();
     const { user } = useContext(AuthContext);
+
+    const [isAddProductModalOpen, setAddProductModalOpen] = useState(false);
+
+    const handleCloseAddProductModal = () => {
+        setAddProductModalOpen(false);
+    };
+
+    const handleOpenAddProductModal = () => {
+        setAddProductModalOpen(true);
+    };
 
     if (products.length === 0) {
         return (
@@ -36,10 +47,23 @@ export default function Section(props: ISectionProps) {
                             <h3>{new Intl.NumberFormat('pt-BR', {
                                 style: 'currency',
                                 currency: 'BRL'
-                            }).format(parseInt(product.price))}</h3>
+                            }).format(parseFloat(product.price))}</h3>
                         </div>
                     </Item>
                 ))}
+                {user?.admin
+                
+                    ? <AddProduct onClick={handleOpenAddProductModal}>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z" /></svg>
+                        <h2>Adicionar Produto</h2>
+                        <AddProductModal
+                            isOpen={isAddProductModalOpen}
+                            onRequestClose={handleCloseAddProductModal}
+                        />
+                    </AddProduct>
+                    
+                    : <></>
+                }
 
             </Products>
         </SectionBody>

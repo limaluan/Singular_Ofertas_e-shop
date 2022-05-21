@@ -1,7 +1,7 @@
 import { FormEvent, useContext, useState } from "react";
 import ReactModal from "react-modal";
-import { AuthContext } from "../../contexts/AuthContext";
-import { changeUserAvatar } from "../../services/api";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { changeUserAvatar } from "../../../services/api";
 import '../LoginModal/index';
 
 interface IUserAvatarModalProps {

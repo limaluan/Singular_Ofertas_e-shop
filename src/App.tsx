@@ -12,14 +12,14 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <Header />
         <ProductsProvider>
-          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
-          <Footer />
         </ProductsProvider>
+        <Footer />
       </AuthProvider>
       <GlobalStyle />
     </BrowserRouter>

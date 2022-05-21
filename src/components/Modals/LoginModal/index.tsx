@@ -1,12 +1,11 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
-import { registerUser } from "../../services/api";
+import { registerUser } from "../../../services/api";
 
 import Modal from "react-modal";
-import "./styles.css";
 
-import closeImg from '../../assets/img/close.svg';
-import singularLogo from '../../assets/img/singular_icon.png';
-import { AuthContext } from "../../contexts/AuthContext";
+import closeImg from '../../../assets/img/close.svg';
+import singularLogo from '../../../assets/img/singular_icon.png';
+import { AuthContext } from "../../../contexts/AuthContext";
 
 interface ILoginModalProps {
     isOpen: boolean;
@@ -23,7 +22,7 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
     const [loginModal, setLoginModal] = useState('visible');
     const [registerModal, setRegisterModal] = useState('invisible');
 
-    const [loginError, SetLoginError] = useState(false);
+    const [loginError, SetLoginError] = useState('');
     const [registerError, SetregisterError] = useState('');
 
     const { signIn } = useContext(AuthContext);
@@ -51,22 +50,21 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
     async function handleRegisterSubmit(event: FormEvent) {
         event.preventDefault();
 
-
         const response = await registerUser({
             username,
             password: userPassword,
             email: userEmail,
         });
-        
+
         if (response.error) {
             console.log(response.error);
-            if ( response.error === 'email is already token' ) {
+            if (response.error === 'email is already token') {
                 return SetregisterError('Este e-mail já está sendo utilizado.');
             } else {
                 return SetregisterError('E-mail inválido.');
             }
         }
-        
+
         signIn({
             email: userEmail,
             password: userPassword
@@ -84,7 +82,7 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
         });
 
         if (!response) {
-            return SetLoginError(true);
+            return SetLoginError('Usuário ou senha inválido');
         }
 
         onRequestClose();
@@ -119,10 +117,7 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
                     placeholder="Senha"
                     onChange={(event) => setUserPassword(event.target.value)}
                 />
-                {loginError
-                    ? <p>Usuário ou senha inválido</p>
-                    : <></>
-                }
+                <p><b>{loginError}</b></p>
                 <button type='submit'>Login</button>
 
                 <p className="switchLogin">Não tem uma conta? <a href="#" onClick={handleSwitchToRegister}>Cadastre-se</a></p>
@@ -147,7 +142,7 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
                     value={userPassword}
                     onChange={(event) => setUserPassword(event.target.value)}
                 />
-                <p>{registerError}</p>
+                <p><b>{registerError}</b></p>
                 <button type="submit">Cadastrar</button>
 
                 <p className="switchLogin">Já possui uma conta? <a href="#" onClick={handleSwitchToLogin}>Faça Login</a></p>

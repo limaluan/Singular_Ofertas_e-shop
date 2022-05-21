@@ -74,3 +74,27 @@ export const Item = styled.div`
         }
     }
 `;
+
+export const AddProduct = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+
+    width: 100%;
+    
+    :hover {
+        transform: scale(1.1);
+        transition: all 200ms;
+
+        text-decoration: underline;
+    }
+    
+    svg {
+        width: 50%;
+    }
+
+    svg, h2 {
+        cursor: pointer;
+    }
+`;

@@ -2,21 +2,21 @@ import styled from "styled-components";
 
 export const Container = styled.main`
     width: 80vw;
+    height: 100%;
     margin: auto;
-    
-    div {
+
+    section {
         position: relative;
-    }
-    
-    img {
+
+        > img {
         display:block;
         width: 100%;
         margin: auto;
 
         cursor: pointer;
-    }
-
-    svg {
+        }
+        
+        > svg {
         min-width: 2.5rem;
         width: 3vw;
         cursor: pointer;
@@ -24,5 +24,6 @@ export const Container = styled.main`
         position: absolute;
         top: 1%;
         right: 1%;
+        }
     }
 `;

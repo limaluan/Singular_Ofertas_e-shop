@@ -13,9 +13,17 @@ interface IProductsProps {
     image: string;
 }
 
+interface IAddProductsProps {
+    name_product: string;
+    description: string;
+    price: string;
+    image: string;
+}
+
 interface IProductsContextData {
     products: IProductsProps[];
     deleteProduct: (cod_product: string) => any;
+    addProduct: ({ description, image, name_product, price }: IAddProductsProps) => any;
 }
 
 const ProductContext = createContext({} as IProductsContextData);
@@ -40,9 +48,22 @@ export function ProductsProvider({ children }: IProductsProviderProps) {
         return response;
     };
 
+    const addProduct = async ({ description, image, name_product, price }: IAddProductsProps) => {
+        const response = await api.post('/v1/product',
+            {
+                name_product,
+                description,
+                price,
+                image,
+            }
+        );
+        getAllProducts();
+        return response;
+    };
+
     return (
         <ProductContext.Provider
-            value={{ products, deleteProduct }}
+            value={{ products, deleteProduct, addProduct }}
         >
             {children}
         </ProductContext.Provider>

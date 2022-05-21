@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { LoginModal } from "../LoginModal";
+import { LoginModal } from "../Modals/LoginModal";
 import { HeaderContainer, Container, User, BarMenu } from "./styles";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
 import singularOfertasImg from "../../assets/img/singular_ofertas_name.svg";
-import UserAvatarModal from "../UserAvatarModal";
+import UserAvatarModal from "../Modals/UserAvatarModal";
 import { destroyCookie } from "nookies";
 import { Navigate } from "react-router";
 

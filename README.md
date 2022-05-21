@@ -20,9 +20,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 <h2>Front-End</h2>
 
 - HTML
-- Styled-Components
 - TypeScript
 - ReactJs
+- Styled-Components
 - Axios
 
 <h2><a href='https://github.com/KaioAntonio/Galatika-Shop'>Back-End</a></h2>

@@ -16,10 +16,10 @@ export default function AdminPage() {
 
     return (
         <Container>
-            {/* <AdminActionsPanel>
+            <AdminActionsPanel>
                 <h1>Painel de administração</h1>
-            </AdminActionsPanel> */}
+            </AdminActionsPanel>
             <Section title="Todos os produtos" />
         </Container>
     );
-}
+};
