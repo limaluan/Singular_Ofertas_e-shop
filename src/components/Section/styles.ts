@@ -44,9 +44,12 @@ export const Item = styled.div`
     flex-direction: column;
     position: relative;
     
-    svg {
+    justify-content: flex-end;
+    
+    > svg {
         width: 10%;
         position: absolute;
+        top: 1rem;
         right: 1rem;
 
         :hover {
@@ -67,10 +70,21 @@ export const Item = styled.div`
 
         h3 {
             font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
         h2:hover, h3:hover {
             cursor: pointer;
+        }
+    }
+
+    button {
+        display: flex;
+        justify-content: center;
+        
+        svg {
+            width: 2rem;
+            margin-right: 0.5rem;
         }
     }
 `;

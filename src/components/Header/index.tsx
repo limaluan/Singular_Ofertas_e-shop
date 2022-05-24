@@ -7,7 +7,6 @@ import { AuthContext } from "../../contexts/AuthContext";
 import singularOfertasImg from "../../assets/img/singular_ofertas_name.svg";
 import UserAvatarModal from "../Modals/UserAvatarModal";
 import { destroyCookie } from "nookies";
-import { Navigate } from "react-router";
 
 export default function Header() {
     const [isLoginModalOpen, setisLoginModalOpen] = useState(false);

@@ -66,6 +66,8 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
+    /* Modal Global Style */
+    
         @keyframes onModalOpen {
         0% {
             margin-top: 60rem
@@ -96,8 +98,8 @@ export const GlobalStyle = createGlobalStyle`
 
     .content {
         width: 100%;
-        max-width: 300px;
-        padding: 10px;
+        max-width: 33rem;
+        padding: 3rem;
 
         background-color: var(--background);
 
@@ -140,7 +142,7 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 2.5rem;
         margin: 10px 0px;
     }
-
+    
     .content form {
         display: flex;
         flex-direction: column;
@@ -149,6 +151,16 @@ export const GlobalStyle = createGlobalStyle`
         width: 95%;
     }
 
+    .content form > svg {
+        position: absolute;
+        width: 2rem;
+
+        top: 1rem;
+        right: 1rem;
+
+        cursor: pointer;
+    }
+    
     .content input {
         width: 100%;
         margin-bottom: 5px;
