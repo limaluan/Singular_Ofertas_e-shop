@@ -45,6 +45,12 @@ export const Item = styled.div`
     position: relative;
     
     justify-content: flex-end;
+
+    img {
+        max-width: 100%;
+        max-height: 25rem;
+        object-fit: contain;
+    }
     
     > svg {
         width: 10%;

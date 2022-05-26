@@ -57,12 +57,7 @@ export function LoginModal({ isOpen, onRequestClose, isLogin, changeIsLogin }: I
         });
 
         if (response.error) {
-            console.log(response.error);
-            if (response.error === 'email is already token') {
-                return SetregisterError('Este e-mail já está sendo utilizado.');
-            } else {
-                return SetregisterError('E-mail inválido.');
-            }
+            return SetregisterError(response.error);
         }
 
         signIn({
