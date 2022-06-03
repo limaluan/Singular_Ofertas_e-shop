@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AdminPage from "./pages/Admin";
 import { ProductsProvider } from "./hooks/useProducts";
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <ProductsProvider>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/produtos" element={<Products />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </ProductsProvider>

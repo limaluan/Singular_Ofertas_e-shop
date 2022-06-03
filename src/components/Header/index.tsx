@@ -85,7 +85,7 @@ export default function Header() {
                     <li><a href="/">Ínicio</a></li>
                     <li>Quem somos?</li>
                     <li>Perguntas Frequentes</li>
-                    <li>Produtos</li>
+                    <li><a href="/produtos">Produtos</a></li>
                     <li>Contate-nos</li>
                 </ul>
             </BarMenu>
