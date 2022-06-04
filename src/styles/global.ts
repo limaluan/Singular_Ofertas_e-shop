@@ -146,7 +146,7 @@ export const GlobalStyle = createGlobalStyle`
     .content form {
         display: flex;
         flex-direction: column;
-        margin-bottom: 10px;
+        gap: 0.5rem;
 
         width: 95%;
     }
@@ -163,7 +163,7 @@ export const GlobalStyle = createGlobalStyle`
     
     .content input {
         width: 100%;
-        margin-bottom: 5px;
+        /* margin-bottom: 5px; */
     }
 
     .content button {

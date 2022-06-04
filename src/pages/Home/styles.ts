@@ -27,7 +27,7 @@ export const Container = styled.main`
         }
     }
 
-    section + section {
+    .addSection {
         border: 1rem dashed var(--subtext);
         border-radius: 30px;
         background-color: var(--gray-light);

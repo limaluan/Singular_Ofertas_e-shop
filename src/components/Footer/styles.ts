@@ -60,4 +60,7 @@ export const FooterMenu = styled.div`
         font-size: 1.2rem;
     }
     
+    li a:hover {
+        text-decoration: underline;
+    }
 `;
