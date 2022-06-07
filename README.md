@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  <img alt="Singular Ofertas" title="Singular Ofertas" src="https://i.imgur.com/iE0X2eR.png" width="220px" />
+</h1>
 
-## Getting Started
+<p align="center">
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;
+</p>
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<p align="center">
+  <img alt="dev.finances" src="https://i.imgur.com/Kf8BYNq.gif" width="100%">
+</p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Tecnologias
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<h2>Front-End</h2>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- HTML
+- TypeScript
+- ReactJs
+- Styled-Components
+- Axios
 
-## Learn More
+<h2><a href='https://github.com/KaioAntonio/Galatika-Shop'>Back-End</a></h2>
 
-To learn more about Next.js, take a look at the following resources:
+ - FastAPI
+ - Python
+ - Postgre
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<!-- ## 💻 Projeto -->
+## 🚧 Projeto em progresso
+ Esse projeto trata-se de um e-shop simples com funcionalidades como:
+ - Cadastro de Usuário
+ - Login
+ - Criação de Produtos
+ - Dashboard de Admnistração
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🔖 Layout
 
-## Deploy on Vercel
+Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/djgVl7LQRiR6kM2gKoWOfC/Singular-Ofertas?node-id=2%3A4). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## 🌐 API
+Você pode acessar a API através [desse link](https://galatika-shop.herokuapp.com).
+
+---
+
+Feito com ♥ by [Luan Lima](https://github.com/limaluan) and [Kaio Antônio](https://github.com/KaioAntonio).
