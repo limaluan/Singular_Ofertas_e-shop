@@ -19,6 +19,10 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    a {
+        color: var(--title);
+    }
+    
     html {
         font-size: 62.5%;
     }

@@ -22,6 +22,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - HTML
 - TypeScript
 - ReactJs
+- NextJs
 - Styled-Components
 - Axios
 

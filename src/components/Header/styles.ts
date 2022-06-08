@@ -18,15 +18,8 @@ export const Container = styled.header`
 
     .user {
         display: none;
-    }
-    
-    .user.on {
-        display: flex;
         justify-content: center;
         align-items: center;
-        
-        position: absolute;
-        z-index: 1;
 
         color: var(--background);
 
@@ -40,6 +33,12 @@ export const Container = styled.header`
         }
     }
     
+    .user.on {
+        display: flex;
+        position: absolute;
+        z-index: 1;
+    }
+    
     .nav-menu {
         position: absolute;
         display: none;
@@ -51,6 +50,7 @@ export const Container = styled.header`
         justify-content: center;
         align-items: center;
 
+        padding-top: 1rem;
         gap: 1rem;
         text-align: center;
         color: var(--background);
@@ -61,7 +61,7 @@ export const Container = styled.header`
         background-color: var(--yellow);
     }
 
-    .nav-menu.on ul {
+    .nav-menu ul {
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -78,6 +78,10 @@ export const Container = styled.header`
         gap: 3px;
 
         z-index: 10;
+
+        :hover {
+            cursor: pointer;
+        }
     }
     
     [class^='bar'] {
@@ -98,5 +102,52 @@ export const Container = styled.header`
     
     .bar-three.on {
         transform: rotate(-45deg) translate(1px,-1px);
+    }
+
+    @media (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 15vh 5vh;
+        grid-template-areas: 'logo user'
+                             'nav nav';
+        height: 20vh;
+        
+        .logoImg {
+            grid-area: logo;
+            padding-left: 10vw;
+        }
+        
+        .user {
+            grid-area: user;
+            justify-content: right;
+            
+            display: flex;
+            font-size: 1.2rem;
+            padding-right: 10vw;
+        }
+
+        .nav-menu {
+            position: initial;
+            width: 100%;
+            height: 100%;
+            
+            grid-area: nav;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            font-size: 1rem;
+            background-color: var(--gray-light);
+        }
+
+        .nav-menu ul {
+            flex-direction: row;
+            align-items: center;
+            gap: 3.5rem;
+        }
+        
+        .menu-mobile-icon {
+            display: none;
+        }
     }
 `;

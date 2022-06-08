@@ -4,7 +4,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Ínicio</title>
+                <title>Singular | Ínicio</title>
             </Head>
             <h1>Hello World</h1>
         </>
