@@ -68,6 +68,10 @@ export const Container = styled.header`
         height: 75%;
     }
     
+    a {
+        font-weight: bold;
+    }
+    
     .menu-mobile-icon {
         position: absolute;
         top: 1rem;
@@ -122,7 +126,7 @@ export const Container = styled.header`
             justify-content: right;
             
             display: flex;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             padding-right: 10vw;
         }
 
@@ -136,7 +140,7 @@ export const Container = styled.header`
             justify-content: center;
             align-items: center;
             
-            font-size: 1rem;
+            font-size: 1.6rem;
             background-color: var(--gray-light);
         }
 

@@ -6,6 +6,7 @@ export default class MyDocument extends Document {
             <Html>
                 <Head>
                     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+                    <link rel="icon" href='/singular_icon.png' />
                     {/* font-family: 'Roboto', sans-serif; 400 500 700
                         font-family: 'Roboto Mono', monospace; */}
                 </Head>

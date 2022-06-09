@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     a {
-        color: var(--title);
+        color: inherit;
     }
     
     html {
@@ -32,5 +32,28 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         font-size: 1.6rem;
         -webkit-font-smoothing: antialiased;
+    }
+
+    button {
+        border: none;
+        background-color: var(--yellow);
+        border-radius: 3rem;
+        padding: 0.5rem;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        color: var(--title);
+
+        transition: filter 0.2s;
+        &:hover {
+            cursor: pointer;
+            filter: brightness(0.9);
+        }
     }
 `;
