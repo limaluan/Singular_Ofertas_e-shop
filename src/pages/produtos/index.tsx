@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useProducts } from "../../hooks/useProducts";
-import { Container } from "./styles";
+import Container from "./styles";
 
 export default function Produtos() {
     const { products } = useProducts();
