@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { useState } from "react";
+import LoginModal from "../Modals/LoginModal";
 import { Container } from "./styles";
 
 export default function Header() {
@@ -7,6 +9,8 @@ export default function Header() {
             element.classList.toggle("on");
         })
     }
+
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
     return (
         <Container>
@@ -20,7 +24,7 @@ export default function Header() {
                 {/* <img src="https://static.remove.bg/remove-bg-web/669d7b10b2296142983fac5a5243789bd1838d00/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg" />
                 <h2>Olá, User!</h2> */}
                 <img src="https://portal1.iff.edu.br/desenvolvimento-institucional/imagens/avatar.jpg" />
-                <p>Faça <a href="#">Login</a> ou <br /><a href="#">Crie sua conta</a></p>
+                <p>Faça <a onClick={() => setIsLoginModalOpen(true)}>Login</a> ou <br /><a href="#">Crie sua conta</a></p>
             </div>
             <nav className="nav-menu mobile">
                 <ul>
@@ -31,6 +35,10 @@ export default function Header() {
                     <li>Contate-nos</li>
                 </ul>
             </nav>
+            <LoginModal
+                isOpen={isLoginModalOpen}
+                onRequestClose={() => setIsLoginModalOpen(false)}
+            />
         </Container>
     );
 }

@@ -19,7 +19,7 @@ export default function Home() {
     const slidePrevImage = () => {
         console.log(`Prev Image ${carouselPosition}`)
         if (carouselPosition >= 0) {
-            setCarouselPosition(0);
+            setCarouselPosition(-200);
             return document.getElementById('banners-content').style.transform = `translateX(${carouselPosition}vw)`;
         }
         setCarouselPosition(carouselPosition + 100);
