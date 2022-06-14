@@ -68,6 +68,15 @@ export const GlobalStyle = createGlobalStyle`
         padding: 1.2rem;
     }
 
+    .invisible {
+        visibility: hidden;
+        position: absolute;
+    }
+    .visible {
+        visibility: initial;
+        position: initial;
+    }
+    
     /* Modal Global Styles */
     @keyframes onModalOpen {
         0% {

@@ -42,10 +42,10 @@ export default function LoginModal({ isOpen, onRequestClose }: ILoginModalProps)
                 className='singularLogo' />
                 <h2>Faça seu Login</h2>
             <form onSubmit={handleLogin}>
-                <input type="text" placeholder='Email'
+                <input type="email" placeholder='Email'
                     value={userEmail} onChange={(e) => setUserEmail(e.target.value)}
                 />
-                <input type="text" placeholder='Senha'
+                <input type="password" placeholder='Senha'
                     value={userPassword} onChange={(e) => setUserPassword(e.target.value)}
                 />
                 <button type='submit'>Login</button>

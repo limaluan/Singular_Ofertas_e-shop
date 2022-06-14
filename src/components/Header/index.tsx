@@ -28,7 +28,7 @@ export default function Header() {
                     ? <><img src={user.avatar} />
                         <h2>Olá, {user.username}!</h2></>
                     : <><img src="https://portal1.iff.edu.br/desenvolvimento-institucional/imagens/avatar.jpg" />
-                        <p>Faça <a onClick={() => setIsLoginModalOpen(true)}>Login</a> ou <br /><a href="#">Crie sua conta</a></p></>
+                        <p>Faça <a onClick={() => setIsLoginModalOpen(true)} href="#">Login</a> ou <br /><a href="#">Crie sua conta</a></p></>
                 }
             </div>
             <nav className="nav-menu mobile">
