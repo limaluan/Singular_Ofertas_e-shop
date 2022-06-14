@@ -11,6 +11,7 @@ export const Container = styled.header`
     align-items: center;
     
     position: relative;
+    z-index: 1000;
     
     .logoImg {
         height: 80%;
@@ -89,7 +90,7 @@ export const Container = styled.header`
     }
     
     [class^='bar'] {
-        width: 20px;
+        width: 25px;
         height: 2px;
         background-color: #fff;
 
