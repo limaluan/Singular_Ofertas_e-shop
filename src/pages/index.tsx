@@ -5,6 +5,10 @@ import Container from "./styles";
 export default function Home() {
     const [carouselPosition, setCarouselPosition] = useState(0);
 
+    setInterval(() => {
+        slideNextImage();
+    }, 7000);
+    
     const slideNextImage = () => {
         console.log(`next Image ${carouselPosition}`)
         const images = document.querySelectorAll('.banners-image');

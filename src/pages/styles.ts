@@ -33,7 +33,7 @@ export default styled.main`
 
     #banners-content {
         display: flex;
-        transition: all 1s;
+        transition: all 1500ms;
     }
 
     .banners img {

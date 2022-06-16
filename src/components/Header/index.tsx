@@ -5,19 +5,30 @@ import LoginModal from "../Modals/LoginModal";
 import { Container } from "./styles";
 
 export default function Header() {
-    const handleOpenMenuMobile = () => {
+    const toggleOpenMenuMobile = () => {
         document.querySelectorAll('.mobile').forEach((element) => {
             element.classList.toggle("on");
         })
     }
 
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const [isLoginMode, setIsLoginMode] = useState(false);
+
+    const handleLoginModeModal = () => {
+        setIsLoginMode(true);
+        setIsLoginModalOpen(true);
+    };
+
+    const handleRegisterModeModal = () => {
+        setIsLoginMode(false);
+        setIsLoginModalOpen(true);
+    };
 
     const { user } = useContext(AuthContext);
 
     return (
         <Container>
-            <div className="menu-mobile-icon" onClick={handleOpenMenuMobile}>
+            <div className="menu-mobile-icon" onClick={toggleOpenMenuMobile}>
                 <div className="bar-one mobile"></div>
                 <div className="bar-two mobile"></div>
                 <div className="bar-three mobile"></div>
@@ -28,11 +39,11 @@ export default function Header() {
                     ? <><img src={user.avatar} />
                         <h2>Olá, {user.username}!</h2></>
                     : <><img src="https://portal1.iff.edu.br/desenvolvimento-institucional/imagens/avatar.jpg" />
-                        <p>Faça <a onClick={() => setIsLoginModalOpen(true)} href="#">Login</a> ou <br /><a href="#">Crie sua conta</a></p></>
+                        <p>Faça <a onClick={handleLoginModeModal} href="#">Login</a> ou <br /><a href="#" onClick={handleRegisterModeModal}>Crie sua conta</a></p></>
                 }
             </div>
             <nav className="nav-menu mobile">
-                <ul>
+                <ul onClick={toggleOpenMenuMobile}>
                     <li><Link href={'/'}>Ínicio</Link></li>
                     <li>Quem somos?</li>
                     <li>Perguntas Frequentes</li>
@@ -47,6 +58,7 @@ export default function Header() {
             <LoginModal
                 isOpen={isLoginModalOpen}
                 onRequestClose={() => setIsLoginModalOpen(false)}
+                LoginMode={isLoginMode}
             />
         </Container>
     );

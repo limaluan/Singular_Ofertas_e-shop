@@ -1,18 +1,23 @@
 import Modal from 'react-modal';
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { AuthContext } from '../../contexts/AuthContext';
 import { api } from '../../services/api';
 
 interface ILoginModalProps {
     isOpen: boolean;
     onRequestClose: () => void;
+    LoginMode: boolean;
 }
 
-export default function LoginModal({ isOpen, onRequestClose }: ILoginModalProps) {
+export default function LoginModal({ isOpen, onRequestClose, LoginMode }: ILoginModalProps) {
     const [username, setUsername] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
 
+    useEffect(() => {
+        setLoginMode(LoginMode);
+    }, [LoginMode]);
+    
     const { signIn } = useContext(AuthContext);
 
     const handleLogin = async (e: FormEvent) => {
