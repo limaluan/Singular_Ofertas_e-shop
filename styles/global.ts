@@ -21,6 +21,7 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
         color: inherit;
+        font-weight: bold;
     }
     
     html {
