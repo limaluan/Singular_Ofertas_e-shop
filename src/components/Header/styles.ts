@@ -31,6 +31,7 @@ export const Container = styled.header`
             
             margin-right: 1rem;
             object-fit: cover;
+            cursor: pointer;
         }
     }
     

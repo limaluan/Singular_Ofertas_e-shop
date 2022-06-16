@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import AvatarModal from "../Modals/avatarModal";
 import LoginModal from "../Modals/LoginModal";
 import { Container } from "./styles";
 
@@ -11,6 +12,7 @@ export default function Header() {
         })
     }
 
+    const [isAvatarModalOpen, setAvatarModalOpen] = useState(false);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isLoginMode, setIsLoginMode] = useState(false);
 
@@ -34,14 +36,16 @@ export default function Header() {
                 <div className="bar-three mobile"></div>
             </div>
             <img className="logoImg" src="https://i.imgur.com/0C8DIYD.png" alt="Singular Logo" />
+
             <div className="user mobile">
                 {user
-                    ? <><img src={user.avatar} />
+                    ? <><img src={user.avatar} onClick={() => setAvatarModalOpen(true)} />
                         <h2>Olá, {user.username}!</h2></>
                     : <><img src="https://portal1.iff.edu.br/desenvolvimento-institucional/imagens/avatar.jpg" />
                         <p>Faça <a onClick={handleLoginModeModal} href="#">Login</a> ou <br /><a href="#" onClick={handleRegisterModeModal}>Crie sua conta</a></p></>
                 }
             </div>
+            
             <nav className="nav-menu mobile">
                 <ul onClick={toggleOpenMenuMobile}>
                     <li><Link href={'/'}>Ínicio</Link></li>
@@ -55,10 +59,15 @@ export default function Header() {
                     }
                 </ul>
             </nav>
+            
             <LoginModal
                 isOpen={isLoginModalOpen}
                 onRequestClose={() => setIsLoginModalOpen(false)}
                 LoginMode={isLoginMode}
+            />
+            <AvatarModal
+                isOpen={isAvatarModalOpen}
+                onRequestClose={() => setAvatarModalOpen(false)}
             />
         </Container>
     );
