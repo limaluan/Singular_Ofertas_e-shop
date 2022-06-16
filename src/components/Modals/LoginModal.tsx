@@ -27,8 +27,7 @@ export default function LoginModal({ isOpen, onRequestClose }: ILoginModalProps)
             return setErrorMessageModal('Usuário ou senha inválido');
         }
 
-        onRequestClose();
-        console.log(response);
+        return onRequestClose();
     }
 
     const [errorMessageModal, setErrorMessageModal] = useState('');
@@ -78,29 +77,20 @@ export default function LoginModal({ isOpen, onRequestClose }: ILoginModalProps)
             <h2>Faça seu {isLoginMode ? 'Login' : 'Cadastro'}</h2>
             <form onSubmit={isLoginMode ? handleLogin : handleRegister}>
                 {isLoginMode
-                    ? <>
-                        <input type="email" placeholder='Email'
-                            value={userEmail} onChange={(e) => setUserEmail(e.target.value)}
-                        />
-                        <input type="password" placeholder='Senha'
-                            value={userPassword} onChange={(e) => setUserPassword(e.target.value)}
-                        />
-                        <p><b>{errorMessageModal}</b></p>
-                        <p>Não tem uma conta? <a href='#' onClick={switchLoginMode}>Cadastre-se</a></p>
-                    </>
-                    : <>
-                        <input type="text" placeholder='Usuário'
-                            value={username} onChange={(e) => setUsername(e.target.value)}
-                        />
-                        <input type="email" placeholder='Email'
-                            value={userEmail} onChange={(e) => setUserEmail(e.target.value)}
-                        />
-                        <input type="password" placeholder='Senha'
-                            value={userPassword} onChange={(e) => setUserPassword(e.target.value)}
-                        />
-                        <p><b>{errorMessageModal}</b></p>
-                        <p>Já possui uma conta? <a href='#' onClick={switchLoginMode}>Faça Login</a></p>
-                    </>
+                    ? <></>
+                    : <input type="text" placeholder='Usuário'
+                        value={username} onChange={(e) => setUsername(e.target.value)} />
+                }
+                <input type="email" placeholder='Email'
+                    value={userEmail} onChange={(e) => setUserEmail(e.target.value)}
+                />
+                <input type="password" placeholder='Senha'
+                    value={userPassword} onChange={(e) => setUserPassword(e.target.value)}
+                />
+                <p><b>{errorMessageModal}</b></p>
+                {isLoginMode
+                    ? <p>Não tem uma conta? <a href='#' onClick={switchLoginMode}>Cadastre-se</a></p>
+                    : <p>Já possui uma conta? <a href='#' onClick={switchLoginMode}>Faça Login</a></p>
                 }
                 <button type='submit'>{isLoginMode ? "Login" : "Cadastre-se"}</button>
             </form>
