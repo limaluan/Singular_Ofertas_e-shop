@@ -5,14 +5,10 @@ import Container from "./styles";
 export default function Home() {
     const [carouselPosition, setCarouselPosition] = useState(0);
 
-    setInterval(() => {
-        slideNextImage();
-    }, 7000);
-    
     const slideNextImage = () => {
         console.log(`next Image ${carouselPosition}`)
         const images = document.querySelectorAll('.banners-image');
-        if (((images.length -1) * -100) >= carouselPosition) {
+        if (((images.length - 1) * -100) >= carouselPosition) {
             setCarouselPosition(0);
             return document.getElementById('banners-content').style.transform = `translateX(${carouselPosition}vw)`;
         }
