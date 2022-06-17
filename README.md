@@ -25,6 +25,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - NextJs
 - Styled-Components
 - Axios
+- Nookies
 
 <h2><a href='https://github.com/KaioAntonio/Galatika-Shop'>Back-End</a></h2>
 

@@ -1,5 +1,5 @@
 import { setCookie } from "nookies";
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/api";
 
 interface IAuthProviderProps {
@@ -9,7 +9,6 @@ interface IAuthProviderProps {
 interface IAuthContextData {
     signIn(credentials: ISignInCredentials): Promise<any>;
     user: IUser | undefined;
-    isAuthenticated: boolean;
 };
 
 interface ISignInCredentials {
@@ -28,7 +27,10 @@ export const AuthContext = createContext({} as IAuthContextData);
 
 export function AuthProvider({ children }: IAuthProviderProps) {
     const [user, setUser] = useState<IUser>();
-    const isAuthenticated = !!user;
+
+    useEffect(() => {
+
+    }, []);
 
     async function signIn({ email, password }: ISignInCredentials) {
         try {
@@ -51,7 +53,7 @@ export function AuthProvider({ children }: IAuthProviderProps) {
             setCookie(undefined, 'singular.email', email, {
                 maxAge: 60 * 60 * 24 * 30, // 30 days
                 path: '/',
-            }); // Temporário até implmentação das funcionalidades do token
+            }); // Temporário até implementação das funcionalidades do token
 
             api.get(`v1/user/${email}`).then(
                 response => {
@@ -66,6 +68,8 @@ export function AuthProvider({ children }: IAuthProviderProps) {
                 }
             )
 
+            api.defaults.headers['Authorization'] = `Bearer ${token}`;
+
             return response;
         } catch (err) {
             return console.log(err);
@@ -74,7 +78,7 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
     return (
         <AuthContext.Provider
-            value={{ isAuthenticated, signIn, user }}
+            value={{ signIn, user }}
         >
             {children}
         </AuthContext.Provider>

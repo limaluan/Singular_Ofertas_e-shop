@@ -1,12 +1,18 @@
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import AvatarModal from "../Modals/avatarModal";
+import AvatarModal from "../Modals/AvatarModal";
 import LoginModal from "../Modals/LoginModal";
 import { Container } from "./styles";
 
 export default function Header() {
     const toggleOpenMenuMobile = () => {
+        if (window.innerWidth >= 768) {
+            return document.querySelectorAll('.mobile').forEach((element) => {
+                element.classList.remove("on");
+            })
+        }
+        
         document.querySelectorAll('.mobile').forEach((element) => {
             element.classList.toggle("on");
         })
@@ -45,7 +51,7 @@ export default function Header() {
                         <p>Faça <a onClick={handleLoginModeModal} href="#">Login</a> ou <br /><a href="#" onClick={handleRegisterModeModal}>Crie sua conta</a></p></>
                 }
             </div>
-            
+
             <nav className="nav-menu mobile">
                 <ul onClick={toggleOpenMenuMobile}>
                     <li><Link href={'/'}>Ínicio</Link></li>
@@ -59,7 +65,7 @@ export default function Header() {
                     }
                 </ul>
             </nav>
-            
+
             <LoginModal
                 isOpen={isLoginModalOpen}
                 onRequestClose={() => setIsLoginModalOpen(false)}
