@@ -107,6 +107,7 @@ export const GlobalStyle = createGlobalStyle`
         max-width: 33rem;
         padding: 3rem;
         background-color: var(--background);
+        text-align: center;
         
         display: flex;
         flex-direction: column;
@@ -119,6 +120,12 @@ export const GlobalStyle = createGlobalStyle`
         animation-duration: 0.3s;
         animation-fill-mode: forwards;
         z-index: 10000;
+    }
+    .content svg {
+        position: absolute;
+        right: 3rem;
+        top: 3rem;
+        cursor: pointer;
     }
     .content p {
         text-align: center;
@@ -160,5 +167,61 @@ export const GlobalStyle = createGlobalStyle`
     }
     .content button {
         padding: 1.5rem 0;
+    }
+
+    .content .products-available {
+        display: grid;
+        grid-gap: 1rem;
+        padding: 0.5rem;
+        grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(100px,1fr);
+        overflow-x: auto;
+
+        border: 1px solid var(--gray-light);
+        border-radius: 0.5rem;
+        background-color: #fff;
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            
+            border: 1px solid var(--gray-light);
+            cursor: pointer;
+            
+            width: 100%;
+            height: 100%;
+            gap: 0.5rem;
+
+            svg {
+                position: absolute;
+                width: 1.5rem;
+                right: 0;
+                top: 0;
+            }
+            
+            img {
+                width: 5rem;
+                object-fit: cover;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            h4 {
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .content {
+            max-width: 80vw;
+        }
     }
 `;

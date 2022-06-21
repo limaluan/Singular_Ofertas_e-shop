@@ -29,7 +29,16 @@ export function AuthProvider({ children }: IAuthProviderProps) {
     const [user, setUser] = useState<IUser>();
 
     useEffect(() => {
+        api.get('/v1/user').then(response => {
+            const { username, admin, avatar, email } = response.data;
 
+            setUser({
+                email,
+                username,
+                admin,
+                avatar,
+            })
+        });
     }, []);
 
     async function signIn({ email, password }: ISignInCredentials) {

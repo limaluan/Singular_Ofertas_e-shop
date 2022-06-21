@@ -5,7 +5,7 @@ interface IProductsPropsProvider {
     children: ReactNode;
 }
 
-interface IProductsProps {
+export interface IProductsProps {
     cod_product: string;
     name_product: string;
     description: string;

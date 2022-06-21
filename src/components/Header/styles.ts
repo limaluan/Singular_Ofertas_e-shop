@@ -117,6 +117,7 @@ export const Container = styled.header`
         grid-template-areas: 'logo user'
                              'nav nav';
         height: 20vh;
+        width: 100%;
         
         .logoImg {
             grid-area: logo;
