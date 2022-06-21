@@ -19,7 +19,7 @@ export default function AddSectionModal({ isOpen, onRequestClose }: AddSectionMo
 
     useEffect(() => {
         setProductsAvailable(products);
-    }, []);
+    }, [isOpen]);
 
     const handleAddProductToSection = (event, key: number) => {
         const product = productsAvailable[key];
