@@ -21,7 +21,7 @@ export default function AddSectionModal({ isOpen, onRequestClose }: AddSectionMo
         setProductsAvailable(products);
     }, [isOpen]);
 
-    const handleAddProductToSection = (event, key: number) => {
+    const handleAddProductToSection = (_event: any, key: number) => {
         const product = productsAvailable[key];
         const newProductsAvailable = productsAvailable.filter((currentProduct) => (
             currentProduct.cod_product !== product.cod_product
@@ -31,10 +31,9 @@ export default function AddSectionModal({ isOpen, onRequestClose }: AddSectionMo
 
         setProductsOnSection(productsOnSection);
         setProductsAvailable(newProductsAvailable);
-        console.log(productsCodeToAdd);
     }
 
-    const handleRemoveProductOfSection = (event, key: number) => {
+    const handleRemoveProductOfSection = (_event: any, key: number) => {
         const product = productsOnSection[key];
         const newProductsOnSection = productsOnSection.filter((currentProduct) => (
             currentProduct.cod_product !== product.cod_product
@@ -49,19 +48,17 @@ export default function AddSectionModal({ isOpen, onRequestClose }: AddSectionMo
 
         setProductsOnSection(newProductsOnSection);
         setProductsAvailable(productsAvailable);
-        setProductsCodeToAdd(newProductsCodeToAdd);
-        return console.log(productsCodeToAdd);
+        return setProductsCodeToAdd(newProductsCodeToAdd);
     }
 
     const handleCreateSection = async (e: FormEvent) => {
         e.preventDefault();
 
-        const response = await api.post('/v1/section', {
+        await api.post('/v1/section', {
             section_name: sectionName,
             product_id: productsCodeToAdd.toString().replace('[]', ''),
         })
 
-        console.log(`handleCreateSection ${response.data}`);
         setSectionName('');
         setProductsAvailable(products);
         setProductsCodeToAdd([]);

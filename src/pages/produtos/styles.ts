@@ -40,14 +40,18 @@ export default styled.main`
         button {
             font-size: 1.1rem;
         }
-
+        
+        div > svg {
+            display: block;
+            width: 100%;
+        }
+        
         svg {
             display: none;
         }
     }
 
     @media (min-width: 768px) {
-        
         section {
             font-size: 1.2rem;
             grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -59,6 +63,17 @@ export default styled.main`
             svg {
                 display: block;
                 height: 1.2rem;
+            }
+
+            > div {
+                display: grid;
+                place-items: center;
+            }
+            
+            div > svg {
+                display: block;
+                width: 60%;
+                height: 60%;
             }
         }
     }

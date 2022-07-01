@@ -5,7 +5,6 @@ export default function Carousel() {
     const [carouselPosition, setCarouselPosition] = useState(0);
 
     const slideNextImage = () => {
-        console.log(`next Image ${carouselPosition}`)
         const images = document.querySelectorAll('.banners-image');
         if (((images.length - 1) * -100) >= carouselPosition) {
             setCarouselPosition(0);
@@ -16,7 +15,6 @@ export default function Carousel() {
     }
 
     const slidePrevImage = () => {
-        console.log(`Prev Image ${carouselPosition}`)
         if (carouselPosition >= 0) {
             setCarouselPosition(-200);
             return document.getElementById('banners-content').style.transform = `translateX(${carouselPosition}vw)`;

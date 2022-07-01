@@ -32,6 +32,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
  - FastAPI
  - Python
  - Postgre
+ - Heroku
 
 <!-- ## 💻 Projeto -->
 ## 🚧 Projeto em progresso
