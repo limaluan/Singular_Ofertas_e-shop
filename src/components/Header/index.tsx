@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { destroyCookie } from "nookies";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import AvatarModal from "../Modals/AvatarModal";
@@ -12,7 +13,7 @@ export default function Header() {
                 element.classList.remove("on");
             })
         }
-        
+
         document.querySelectorAll('.mobile').forEach((element) => {
             element.classList.toggle("on");
         })
@@ -31,6 +32,12 @@ export default function Header() {
         setIsLoginMode(false);
         setIsLoginModalOpen(true);
     };
+
+    const handleLogout = () => {
+        destroyCookie(undefined, 'singular.token');
+
+        return window.location.reload();
+    }
 
     const { user } = useContext(AuthContext);
 
@@ -60,7 +67,7 @@ export default function Header() {
                     <li><Link href={'/produtos'}>Produtos</Link></li>
                     <li>Contate-nos</li>
                     {user
-                        ? <li>Sair</li>
+                        ? <li onClick={() => handleLogout()}><a href="#">Sair</a></li>
                         : <></>
                     }
                 </ul>

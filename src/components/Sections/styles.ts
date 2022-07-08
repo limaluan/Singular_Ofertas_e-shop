@@ -41,5 +41,15 @@ export default styled.section`
     @media (min-width: 768px) {
         width: 80vw;
         margin: auto;
+
+        article > button {
+            font-size: 1.4rem;
+            padding: initial 1rem;
+            
+            svg {
+                height: 1.4rem;
+                display: block;
+            }
+        }
     }
 `;
