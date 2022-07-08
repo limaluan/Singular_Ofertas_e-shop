@@ -27,7 +27,7 @@ export default styled.main`
 
     @media (min-width: 768px) {
         .add-section {
-            width: 90vw;
+            width: 80vw;
             margin: auto;
         }
     }

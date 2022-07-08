@@ -39,7 +39,7 @@ export default styled.section`
     }
 
     @media (min-width: 768px) {
-        max-width: 90vw;
+        max-width: 80vw;
         margin: auto;
     }
 `;
