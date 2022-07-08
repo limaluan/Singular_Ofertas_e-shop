@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.footer`
+export default styled.footer`
     height: fit-content;
     width: 100%;
     background-color: var(--yellow);
