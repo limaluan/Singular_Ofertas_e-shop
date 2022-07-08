@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useContext, useState } from "react";
 import Carousel from "../components/Carousel";
+import Footer from "../components/Footer";
 import AddSectionModal from "../components/Modals/AddSection";
 import Sections from "../components/Sections";
 import { AuthContext } from "../contexts/AuthContext";
@@ -28,6 +29,7 @@ export default function Home() {
                 onRequestClose={() => setAddSectionModalOpen(false)}
             />
             <Sections />
+            <Footer />
         </Container>
     )
 }
