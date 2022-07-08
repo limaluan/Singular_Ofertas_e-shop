@@ -4,11 +4,11 @@ import Container from './styles';
 import Carousel from 'react-elastic-carousel';
 
 import { IProductsProps } from "../../hooks/useProducts";
-interface ISectionProps {
-    id_section: string,
-    name_section: string,
-    info_products: IProductsProps[],
-}
+// interface ISectionProps {
+//     id_section: string,
+//     name_section: string,
+//     info_products: IProductsProps[],
+// }
 
 export default function Sections() {
 
@@ -21,7 +21,7 @@ export default function Sections() {
         // { width: 1750, itemsToShow: 6 },
     ]
 
-    const [sections, setSections] = useState<ISectionProps[]>([]);
+    const [sections, setSections] = useState([]);
 
     useEffect(() => {
         api.get('/v1/section').then(response => setSections(response.data));
@@ -34,7 +34,7 @@ export default function Sections() {
                 ? sections.map(section => (
                     <section className='products-section' key={section.id_section}>
                         <h2>{section.name_section}</h2>
-                        <Carousel isRTL breakPoints={breakPoints}>
+                        <Carousel breakPoints={breakPoints}>
                             {section.info_products.map((product) => (
                                 <article className="item" key={product.cod_product}>
                                     <img src={product.image} alt={product.description} />
