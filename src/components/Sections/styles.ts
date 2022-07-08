@@ -5,6 +5,10 @@ export default styled.section`
     flex-direction: column;
     gap: 1.5rem;
     
+    button.rec-dot {
+        background-color: #fff;
+    }
+    
     .products-section {
         background-color: #fff;
         border-radius: 2rem;
