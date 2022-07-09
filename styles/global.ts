@@ -221,7 +221,7 @@ export const GlobalStyle = createGlobalStyle`
 
     @media (min-width: 768px) {
         .content {
-            max-width: 80vw;
+            max-width: 30vw;
         }
     }
 `;

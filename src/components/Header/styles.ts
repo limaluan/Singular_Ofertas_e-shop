@@ -13,6 +13,14 @@ export const Container = styled.header`
     position: relative;
     z-index: 1000;
     
+    .cart {
+        filter: invert(97%) sepia(0%) saturate(11%) hue-rotate(213deg) brightness(102%) contrast(106%);
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        height: 2rem;
+    }
+    
     .logoImg {
         height: 80%;
     }

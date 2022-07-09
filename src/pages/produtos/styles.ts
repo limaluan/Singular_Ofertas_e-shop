@@ -17,7 +17,7 @@ export default styled.main`
         gap: 1rem;
         row-gap: 1.5rem;
         
-        width: 100vw;
+        width: 100%;
         padding: 1rem;
         
         font-size: 1.1rem;

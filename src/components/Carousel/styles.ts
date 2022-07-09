@@ -30,6 +30,10 @@ export default styled.section`
 
         background-color: lightgray;
     }
+
+    button.rec-dot:focus {
+        background-color: orange;
+    }
     
     @media (min-width: 768px) {
         max-width: 80vw;

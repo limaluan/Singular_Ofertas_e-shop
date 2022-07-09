@@ -29,7 +29,6 @@ export default function Home() {
                 onRequestClose={() => setAddSectionModalOpen(false)}
             />
             <Sections />
-            <Footer />
         </Container>
     )
 }

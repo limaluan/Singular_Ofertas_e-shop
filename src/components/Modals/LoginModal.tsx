@@ -32,7 +32,7 @@ export default function LoginModal({ isOpen, onRequestClose, LoginMode }: ILogin
             return setErrorMessageModal('Usuário ou senha inválido');
         }
 
-        return onRequestClose();
+        return window.location.reload();
     }
 
     const [errorMessageModal, setErrorMessageModal] = useState('');
@@ -57,7 +57,7 @@ export default function LoginModal({ isOpen, onRequestClose, LoginMode }: ILogin
             password: userPassword,
         });
 
-        return onRequestClose();
+        return window.location.reload();
     }
 
     const [isLoginMode, setLoginMode] = useState(true);
