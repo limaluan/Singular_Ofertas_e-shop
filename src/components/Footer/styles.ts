@@ -7,6 +7,7 @@ export default styled.footer`
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: absolute;
     
     hr {
         width: 80%;

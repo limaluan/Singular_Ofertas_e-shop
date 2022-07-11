@@ -7,42 +7,69 @@ interface ICartPropsProvider {
     children: ReactNode;
 }
 
+interface IProductsProps2 extends IProductsProps {
+    ammount: number;
+}
+
 interface ICartContextData {
     productsOnCart: IProductsProps[];
+    productsOnCart2: IProductsProps2[];
     addProductToCart: (cod_product: string) => Promise<any>;
+    removeProductCart: (cod_product: string) => Promise<any>;
 }
 
 const CartContext = createContext({} as ICartContextData);
 
 export function CartProvider({ children }: ICartPropsProvider) {
     const [productsOnCart, setProductsOnCart] = useState([]);
+    const [productsOnCart2, setProductsOnCart2] = useState<IProductsProps2[]>([]);
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
         getCartProducts();
-    }, []);
+    }, [user, productsOnCart2]);
 
     const getCartProducts = async () => {
-        api.get(`/v1/cart/${user?.email}`).then(response => {
-            const products = [];
-            response.data.products_cart.forEach(async (productCode) => {
-                const product = await api.get(`/v1/product/${productCode}`);
-                products.push(product.data);
-            });
-            setProductsOnCart(products);
+        await api.get(`/v1/cart/${user?.email}`).then(response => {
+            setProductsOnCart(response.data.products_info);
         })
-        console.log(productsOnCart);
-    }
+        const newProductsOnCart = [];
+        productsOnCart.forEach(product => {
+            let ammount = productsOnCart.filter((productCart => productCart.cod_product === product.cod_product)).length;
+            const newProduct = Object.assign(product, {
+                ammount
+            })
 
-    const addProductToCart = async (cod_product: string) => {
-        const response = await api.post(`/v1/cart/`, {
-            products_cart: cod_product,
-            email: user?.email,
+            const productAlreadyExists = newProductsOnCart.find(productOnCart => productOnCart.cod_product === product.cod_product);
+            if (!productAlreadyExists) {
+                newProductsOnCart.push(newProduct);
+                setProductsOnCart2(newProductsOnCart);
+            }
         });
     }
 
+    const addProductToCart = async (cod_product: string) => {
+        await api.post(`/v1/cart/`, {
+            products_cart: cod_product,
+            email: user?.email,
+        });
+
+        return getCartProducts();
+    }
+
+    const removeProductCart = async (cod_product: string) => {
+        await api.delete('/v1/cart', {
+            data: {
+                products_cart: cod_product,
+                email: user?.email,
+            }
+        });
+
+        return getCartProducts();
+    }
+
     return (
-        <CartContext.Provider value={{ addProductToCart, productsOnCart }}>
+        <CartContext.Provider value={{ addProductToCart, removeProductCart, productsOnCart, productsOnCart2 }}>
             {children}
         </CartContext.Provider>
     )

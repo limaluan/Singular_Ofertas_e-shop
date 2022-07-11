@@ -39,7 +39,7 @@ export function AuthProvider({ children }: IAuthProviderProps) {
                 avatar,
             })
         });
-    }, []);
+    }, [user]);
 
     async function signIn({ email, password }: ISignInCredentials) {
         try {

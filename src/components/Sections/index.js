@@ -25,7 +25,6 @@ export default function Sections() {
 
     useEffect(() => {
         api.get('/v1/section').then(response => setSections(response.data));
-        return console.log(sections);
     }, []);
 
     return (

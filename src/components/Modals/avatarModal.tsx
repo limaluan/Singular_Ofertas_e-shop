@@ -21,8 +21,7 @@ export default function AvatarModal({ isOpen, onRequestClose }: ILoginModalProps
             avatar: imgUrl,
         })
 
-        onRequestClose();
-        return console.log(response);
+        return window.location.reload();
     }
 
     Modal.setAppElement("#__next")
