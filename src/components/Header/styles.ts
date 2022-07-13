@@ -24,7 +24,35 @@ export const Container = styled.header`
     .logoImg {
         height: 80%;
     }
+    
+    .user-area {
+        justify-content: center;
+        align-items: center;
 
+        color: var(--background);
+
+        img {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 3rem;
+            
+            margin-right: 1rem;
+            object-fit: cover;
+            cursor: pointer;
+        }
+    }
+    
+    .user-area.on {
+        display: flex;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        
+        svg {
+            display: none;
+        }
+    }
+    
     .user {
         display: none;
         justify-content: center;
@@ -127,6 +155,18 @@ export const Container = styled.header`
         height: 20vh;
         width: 100%;
         
+        .user-area {
+            display: flex;
+            justify-content: end;
+            width: 80%;
+            align-items: center;
+        }
+        
+        .cart {
+            position: static;
+            cursor: pointer;
+        }
+        
         .logoImg {
             grid-area: logo;
             padding-left: 10vw;
@@ -138,12 +178,12 @@ export const Container = styled.header`
             
             display: flex;
             font-size: 1.3rem;
-            padding-right: 10vw;
+            padding-right: 2vw;
         }
 
         .nav-menu {
             position: initial;
-            width: 100%;
+            max-width: 100%;
             height: 100%;
             
             grid-area: nav;

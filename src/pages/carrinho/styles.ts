@@ -16,11 +16,14 @@ export default styled.main`
 
     li {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         padding: 1rem 0;
+        max-width: 80vw;
+        margin: auto;
 
         div {
             padding-left: 1rem;
+            position: relative;
 
             h2 {
                 font-size: 1.5rem;
@@ -76,10 +79,14 @@ export default styled.main`
     
     @media (min-width: 768px) {
         ul {
-            max-width: 60vw;
+            max-width: 40vw;
             margin: auto;
         }
 
+        ul + button {
+            max-width: 40vw;
+        }
+        
         hr {
             width: 100%;
         }

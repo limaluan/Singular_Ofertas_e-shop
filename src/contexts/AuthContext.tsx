@@ -1,4 +1,4 @@
-import { setCookie } from "nookies";
+import { destroyCookie, setCookie } from "nookies";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/api";
 
@@ -8,7 +8,9 @@ interface IAuthProviderProps {
 
 interface IAuthContextData {
     signIn(credentials: ISignInCredentials): Promise<any>;
+    logout(): any;
     user: IUser | undefined;
+    isAuthenticated: boolean;
 };
 
 interface ISignInCredentials {
@@ -27,6 +29,7 @@ export const AuthContext = createContext({} as IAuthContextData);
 
 export function AuthProvider({ children }: IAuthProviderProps) {
     const [user, setUser] = useState<IUser>();
+    const isAuthenticated = !!user;
 
     useEffect(() => {
         api.get('/v1/user').then(response => {
@@ -37,9 +40,9 @@ export function AuthProvider({ children }: IAuthProviderProps) {
                 username,
                 admin,
                 avatar,
-            })
+            });
         });
-    }, [user]);
+    }, []);
 
     async function signIn({ email, password }: ISignInCredentials) {
         try {
@@ -59,12 +62,7 @@ export function AuthProvider({ children }: IAuthProviderProps) {
                 path: '/',
             });
 
-            setCookie(undefined, 'singular.email', email, {
-                maxAge: 60 * 60 * 24 * 30, // 30 days
-                path: '/',
-            }); // Temporário até implementação das funcionalidades do token
-
-            api.get(`v1/user/${email}`).then(
+            api.get(`v1/user`).then(
                 response => {
                     const { username, admin, avatar } = response.data;
 
@@ -85,9 +83,15 @@ export function AuthProvider({ children }: IAuthProviderProps) {
         }
     };
 
+    async function logout() {
+        destroyCookie(undefined, 'singular.token');
+
+        return window.location.reload();
+    }
+
     return (
         <AuthContext.Provider
-            value={{ signIn, user }}
+            value={{ signIn, user, logout, isAuthenticated }}
         >
             {children}
         </AuthContext.Provider>
