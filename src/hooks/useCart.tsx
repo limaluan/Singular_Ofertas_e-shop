@@ -1,4 +1,6 @@
+import Router from "next/router";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import LoginModal from "../components/Modals/LoginModal";
 import { AuthContext } from "../contexts/AuthContext";
 import { api } from "../services/api";
 import { IProductsProps } from "./useProducts";
@@ -20,6 +22,9 @@ export function CartProvider({ children }: ICartPropsProvider) {
     const [productsOnCart, setProductsOnCart] = useState([]);
     const { user } = useContext(AuthContext);
 
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const [isLoginMode, setIsLoginMode] = useState(true);
+
     useEffect(() => {
         getCartProducts();
         console.log('UseEffect do Cart')
@@ -34,12 +39,18 @@ export function CartProvider({ children }: ICartPropsProvider) {
     }
 
     const addProductToCart = async (cod_product: string) => {
+        if (!user) {
+            return setIsLoginModalOpen(true);
+        }
+
         await api.post(`/v1/cart/`, {
             products_cart: cod_product,
             email: user?.email,
         });
 
-        return getCartProducts();
+        getCartProducts();
+
+        return Router.push('/carrinho');
     }
 
     const removeProductCart = async (cod_product: string) => {
@@ -57,6 +68,11 @@ export function CartProvider({ children }: ICartPropsProvider) {
         <CartContext.Provider
             value={{ addProductToCart, removeProductCart, productsOnCart, getCartProducts }}>
             {children}
+            <LoginModal
+                isOpen={isLoginModalOpen}
+                onRequestClose={() => setIsLoginModalOpen(false)}
+                LoginMode={isLoginMode}
+            />
         </CartContext.Provider>
     )
 }

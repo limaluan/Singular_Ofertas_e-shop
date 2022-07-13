@@ -48,7 +48,7 @@ export default function Header() {
                     {user
                         ? <><img src={user.avatar} onClick={() => setAvatarModalOpen(true)} />
                             <h2>Olá, {user.username}!</h2></>
-                        : <><img src="https://portal1.iff.edu.br/desenvolvimento-institucional/imagens/avatar.jpg" />
+                        : <><img onClick={() => setIsLoginModalOpen(true)} src="https://portal1.iff.edu.br/desenvolvimento-institucional/imagens/avatar.jpg" />
                             <p>Faça <a onClick={handleLoginModeModal} href="#">Login</a> ou <br /><a href="#" onClick={handleRegisterModeModal}>Crie sua conta</a></p></>
                     }
                 </div>
