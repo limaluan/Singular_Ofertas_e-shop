@@ -63,7 +63,7 @@ export default function AddSectionModal({ isOpen, onRequestClose }: AddSectionMo
         setProductsAvailable(products);
         setProductsCodeToAdd([]);
         setProductsOnSection([]);
-        return onRequestClose();
+        return window.location.reload();
     }
 
     Modal.setAppElement("#__next")

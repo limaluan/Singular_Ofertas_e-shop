@@ -219,6 +219,7 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
+    section svg.close,
     article svg.close {
         display: block;
         position: absolute;
@@ -235,6 +236,7 @@ export const GlobalStyle = createGlobalStyle`
             max-width: 30vw;
         }
 
+        section svg.close,
         article svg.close {
             height: 2rem;
         }
