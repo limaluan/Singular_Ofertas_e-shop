@@ -15,7 +15,7 @@ export interface IProductsProps {
 
 interface IProductsContextData {
     products: IProductsProps[];
-    // deleteProduct: (cod_product: string) => any;
+    deleteProduct: (cod_product: string) => any;
     // addProduct: ({ description, image, name_product, price }: IAddProductsProps) => any;
 }
 
@@ -33,8 +33,13 @@ export function ProductsProvider({ children }: IProductsPropsProvider) {
         return setProducts(productsResponse.data);
     }
 
+    const deleteProduct = async (cod_product: string) => {
+        await api.delete(`/v1/product/${cod_product}`);
+        return getAllProducts();
+    }
+
     return (
-        <ProductContext.Provider value={{ products }}>
+        <ProductContext.Provider value={{ products, deleteProduct }}>
             {children}
         </ProductContext.Provider>
     );

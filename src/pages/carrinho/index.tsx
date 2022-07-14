@@ -66,10 +66,9 @@ export default function Carrinho() {
                     </button></>
                 : <>
                     <h2>Parece que não há itens no seu carrinho.</h2>
-                    <p><Link href={'/produtos'}>Adicione alguns produtos ao seu carrinho.</Link></p>
+                    <p className='margin-only'><Link href={'/produtos'}>Adicione alguns produtos ao seu carrinho.</Link></p>
                 </>
             }
-
         </Container>
     )
 }

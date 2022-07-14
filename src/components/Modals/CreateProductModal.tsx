@@ -13,8 +13,14 @@ export default function CreateProductModal({ isOpen, onRequestClose }: ICreatePr
     const [price, setPrice] = useState('');
     const [imgUrl, setImgUrl] = useState('');
 
+    const [errorMsg, setErrorMsg] = useState('');
+
     const handleCreateProduct = async (e: FormEvent) => {
         e.preventDefault();
+
+        if (name.length >= 25) {
+            return setErrorMsg('O nome do produto deve conter no máximo 25 caracteres.');
+        }
 
         await api.post('/v1/product', {
             name_product: name,
@@ -22,7 +28,7 @@ export default function CreateProductModal({ isOpen, onRequestClose }: ICreatePr
             price,
             image: imgUrl,
         })
-        
+
         onRequestClose();
     }
 
@@ -45,12 +51,13 @@ export default function CreateProductModal({ isOpen, onRequestClose }: ICreatePr
                 <input type="text" placeholder='Descrição'
                     value={description} onChange={(e) => setDescription(e.target.value)}
                 />
-                <input type="text" placeholder='Preço'
+                <input type="number" placeholder='Preço'
                     value={price} onChange={(e) => setPrice(e.target.value)}
                 />
                 <input type="text" placeholder='Url da Imagem do Produto'
                     value={imgUrl} onChange={(e) => setImgUrl(e.target.value)}
                 />
+                <p><b>{errorMsg}</b></p>
                 <button type='submit'>Criar</button>
             </form>
         </Modal>

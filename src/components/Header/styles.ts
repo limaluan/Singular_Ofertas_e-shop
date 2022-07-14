@@ -22,6 +22,7 @@ export const Container = styled.header`
     }
     
     .logoImg {
+        cursor: pointer;
         height: 80%;
     }
     

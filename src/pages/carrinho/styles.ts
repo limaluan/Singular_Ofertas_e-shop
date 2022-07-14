@@ -90,5 +90,9 @@ export default styled.main`
         hr {
             width: 100%;
         }
+
+        p.margin-only {
+            margin-bottom: 31vh;
+        }
     }
 `;

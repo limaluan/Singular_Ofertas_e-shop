@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import Container from './styles';
 import Carousel from 'react-elastic-carousel';

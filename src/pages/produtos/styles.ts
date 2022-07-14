@@ -29,6 +29,7 @@ export default styled.main`
             align-items: center;
 
             gap: 0.5rem;
+            position: relative;
         }
         
         img {
