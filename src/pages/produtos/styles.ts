@@ -52,6 +52,17 @@ export default styled.main`
         }
     }
 
+    svg.close {
+        display: block;
+        position: absolute;
+        width: 2rem;
+        top: 0;
+        right: 0;
+        filter: invert(21%) sepia(96%) saturate(4997%) hue-rotate(353deg) brightness(101%) contrast(105%);
+        cursor: pointer;
+        margin: 1rem;
+    }
+
     @media (min-width: 768px) {
         section {
             font-size: 1.2rem;
@@ -76,6 +87,10 @@ export default styled.main`
                 width: 60%;
                 height: 60%;
             }
+        }
+
+        svg.close {
+            height: 2rem;
         }
     }
 
