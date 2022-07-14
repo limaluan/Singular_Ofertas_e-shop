@@ -219,7 +219,18 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
-    section svg.close, article svg.close {
+    section svg.close {
+        display: block;
+        position: absolute;
+        width: 2rem;
+        top: 0;
+        right: 0;
+        filter: invert(21%) sepia(96%) saturate(4997%) hue-rotate(353deg) brightness(101%) contrast(105%);
+        cursor: pointer;
+        margin: 1rem;
+    }
+
+    article svg.close {
         display: block;
         position: absolute;
         width: 2rem;
@@ -235,7 +246,11 @@ export const GlobalStyle = createGlobalStyle`
             max-width: 30vw;
         }
 
-        section svg.close, article svg.close {
+        article svg.close {
+            height: 2rem;
+        }
+        
+        section svg.close {
             height: 2rem;
         }
     }
