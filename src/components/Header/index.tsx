@@ -4,8 +4,11 @@ import { AuthContext } from "../../contexts/AuthContext";
 import AvatarModal from "../Modals/AvatarModal";
 import LoginModal from "../Modals/LoginModal";
 import { Container } from "./styles";
+import useLockedBody from "../../hooks/useLockedBody";
 
 export default function Header() {
+    const [locked, setLocked] = useLockedBody()
+    
     const toggleOpenMenuMobile = () => {
         if (window.innerWidth >= 768) {
             return document.querySelectorAll('.mobile').forEach((element) => {
@@ -15,6 +18,7 @@ export default function Header() {
 
         document.querySelectorAll('.mobile').forEach((element) => {
             element.classList.toggle("on");
+            setLocked(!locked);
         })
     }
 
