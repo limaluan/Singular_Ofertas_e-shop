@@ -34,7 +34,7 @@ export default styled.main`
         
         img {
             width: 8rem;
-            height: auto;
+            height: 8rem;
             object-fit: contain;
         }
         

@@ -62,10 +62,10 @@ export default function Header() {
             <nav className="nav-menu mobile">
                 <ul onClick={toggleOpenMenuMobile}>
                     <li><Link href={'/'}>Ínicio</Link></li>
-                    <li>Quem somos?</li>
+                    <li><Link href={'quem-somos'}>Sobre</Link></li>
                     <li>Perguntas Frequentes</li>
                     <li><Link href={'/produtos'}>Produtos</Link></li>
-                    <li>Contate-nos</li>
+                    <li><Link href={'/contato'}>Contate-nos</Link></li>
                     {user
                         ? <li onClick={logout}><a href="#">Sair</a></li>
                         : <></>
