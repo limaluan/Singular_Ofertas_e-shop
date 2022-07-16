@@ -82,8 +82,8 @@ export default styled.main`
             max-width: 40vw;
             margin: auto;
         }
-
-        ul + button {
+        
+        button {
             max-width: 40vw;
         }
         
