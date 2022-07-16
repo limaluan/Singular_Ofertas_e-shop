@@ -34,7 +34,7 @@ export const KaioProfile = () => {
             <img src="https://avatars.githubusercontent.com/u/75454785?v=4" alt="" />
             <p><a href="https://github.com/KaioAntonio" target='new_blank'>Kaio Antônio</a> - Back-End<br />
                 {bioKaio}<br />
-                Skills: Python | FastApi | Django | Java | SpringBoot | PostGree <br /><br />
+                Skills: Python | FastApi | Django | Java | SpringBoot | PostgreSQL <br /><br />
                 <a href="https://kaio-antonio-portfolio.herokuapp.com/" target='new_blank'>Portifólio</a>
             </p>
         </article>

@@ -71,7 +71,7 @@ export default function Carrinho() {
                     </ul>
                     {priceCart <= 0
                         ? <></>
-                        : <h2>{new Intl.NumberFormat('pt-BR', {
+                        : <h2>Total: {new Intl.NumberFormat('pt-BR', {
                             style: 'currency',
                             currency: 'BRL'
                         }).format(priceCart)}</h2>
