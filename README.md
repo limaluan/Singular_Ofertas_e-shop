@@ -10,7 +10,7 @@
 
 
 <p align="center">
-  <img alt="dev.finances" src="https://i.imgur.com/Kf8BYNq.gif" width="100%">
+  <img alt="Singular Ofertas" src="https://imgur.com/ccSZgu8.gif" width="100%">
 </p>
 
 ## 🚀 Tecnologias
@@ -35,12 +35,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
  - Heroku
 
 <!-- ## 💻 Projeto -->
-## 🚧 Projeto em progresso
- Esse projeto trata-se de um e-shop simples com funcionalidades como:
- - Cadastro de Usuário
- - Login
- - Criação de Produtos
- - Dashboard de Admnistração
+## 🚧 Projeto
+ Esse projeto trata-se de um e-commerce com funcionalidades como:
+ - Sistema Completo de Registro e Autenticação do Usuário.
+ - Criação e Gerenciamento de Produtos.
+ - Carrinho do Usuário.
+ - Criação de Seções.
 
 ## 🔖 Layout
 
