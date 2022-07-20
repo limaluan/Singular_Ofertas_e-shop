@@ -18,7 +18,7 @@ export default function Carrinho() {
     const [priceCart, setPriceCart] = useState(0.0);
 
     useEffect(() => {
-        if (productsOnCart.length <= 0) {
+        if (productsOnCart.length <= 0 || !user) {
             return setProductsList([]);
         }
         const newProductsOnCart = [];

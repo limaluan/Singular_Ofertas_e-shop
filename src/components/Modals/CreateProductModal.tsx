@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import { FormEvent, useState } from "react";
-import { api } from '../../services/api';
+import { useProducts } from '../../hooks/useProducts';
 
 interface ICreateProductModal {
     isOpen: boolean;
@@ -8,6 +8,8 @@ interface ICreateProductModal {
 }
 
 export default function CreateProductModal({ isOpen, onRequestClose }: ICreateProductModal) {
+    const { addProduct } = useProducts();
+
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -22,14 +24,9 @@ export default function CreateProductModal({ isOpen, onRequestClose }: ICreatePr
             return setErrorMsg('O nome do produto deve conter no máximo 25 caracteres.');
         }
 
-        await api.post('/v1/product', {
-            name_product: name,
-            description,
-            price,
-            image: imgUrl,
-        })
+        await addProduct(description, imgUrl, name, price);
 
-        onRequestClose();
+        return onRequestClose();
     }
 
     Modal.setAppElement("#__next")

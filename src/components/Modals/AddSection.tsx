@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { IProductsProps, useProducts } from '../../../hooks/useProducts';
-import { api } from '../../../services/api';
+import { IProductsProps, useProducts } from '../../hooks/useProducts';
+import { api } from '../../services/api';
 
 interface AddSectionModalProps {
     isOpen: boolean,

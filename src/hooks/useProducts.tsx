@@ -16,7 +16,7 @@ export interface IProductsProps {
 interface IProductsContextData {
     products: IProductsProps[];
     deleteProduct: (cod_product: string) => any;
-    // addProduct: ({ description, image, name_product, price }: IAddProductsProps) => any;
+    addProduct: (description: string, image: string, name_product: string, price: string) => any;
 }
 
 const ProductContext = createContext({} as IProductsContextData);
@@ -38,8 +38,19 @@ export function ProductsProvider({ children }: IProductsPropsProvider) {
         return getAllProducts();
     }
 
+    const addProduct = async (description: string, image: string, name_product: string, price: string) => {
+        await api.post('/v1/product', {
+            name_product,
+            description,
+            price,
+            image
+        });
+
+        return getAllProducts();
+    }
+
     return (
-        <ProductContext.Provider value={{ products, deleteProduct }}>
+        <ProductContext.Provider value={{ products, deleteProduct, addProduct }}>
             {children}
         </ProductContext.Provider>
     );
