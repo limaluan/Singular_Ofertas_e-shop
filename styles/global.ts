@@ -36,6 +36,10 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
+    main {
+        min-height: 85vh;
+    }
+    
     button {
         border: none;
         background-color: var(--yellow);

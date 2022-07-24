@@ -19,13 +19,14 @@ export default styled.footer`
     p {
         font-size: 1.3rem;
         margin-bottom: 1rem;
+        width: 90%;
     }
 
     .payment-methods {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
+        width: 90%;
 
         ul {
             display: flex;
@@ -48,7 +49,7 @@ export default styled.footer`
     .footer-menu {
         display: flex;
         justify-content: space-around;
-        width: 100%;
+        width: 90%;
         
         padding: 2rem 0;
 
