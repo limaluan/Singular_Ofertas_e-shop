@@ -16,7 +16,8 @@ export const LuanProfile = () => {
             <img src="https://avatars.githubusercontent.com/u/83187601?v=4" alt="" />
             <p><a href="https://github.com/limaluan" target='new_blank'>Luan Lima</a> - Front-End<br />
                 {bioLuan}<br />
-                Skills: ReactJs | NodeJs | NextJs | TypeScript | JavaScript | MySQL | Docker
+                Skills: ReactJs | NodeJs | NextJs | TypeScript | JavaScript | MySQL | Docker <br /> <br />
+                <a href="https://limadev.netlify.app/" target='new_blank'>Portifólio</a>
             </p>
         </article>
     )
